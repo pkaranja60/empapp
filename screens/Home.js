@@ -9,7 +9,7 @@ const Home = ({navigation}) => {
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
           <Card.Content>
-            <MaterialIcons name="account-circle" size={30} color="white" />
+            <MaterialIcons name="account-circle" size={35} color="white" />
             <View style={styles.informationContainer}>
               <Text style={styles.textPrimary}>Name & Other Information</Text>
             </View>
@@ -64,16 +64,17 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 20,
     borderRadius: 20,
-    height: 170,
+    height: 200,
     backgroundColor: '#694fad',
   },
   informationContainer: {
     padding: 10,
+    marginVertical: 10,
   },
   informationOtherContainer: {
     padding: 5,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   textPrimary: {
@@ -86,19 +87,23 @@ const styles = StyleSheet.create({
   touchableCard: {
     margin: 15,
     marginTop: 25,
+    // marginVertical: 4,
+    // marginHorizontal: 5,
+    // marginLeft: '3%',
     backgroundColor: '#fff',
     elevation: 5,
     shadowColor: '#171717',
     shadowOffset: {width: 0, height: 3},
     shadowOpacity: 0.4,
     shadowRadius: 2,
-    borderRadius: 20,
-    height: 135,
-    width: 135,
+    borderRadius: 10,
+    height: 115,
+    width: '40.5%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   touchableCardImage: {
+    resizeMode: 'contain',
     width: 56,
     height: 56,
     justifyContent: 'center',

@@ -4,10 +4,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import {Text, View} from 'react-native';
 import Home from '../screens/Home';
 import Profile from '../screens/Profile';
 import LeaveRequest from '../screens/LeaveRequest';
 import LeaveStatus from '../screens/LeaveStatus';
+import Login from '../screens/auth/Login';
 
 const Stack = createNativeStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -42,13 +44,29 @@ const TabNavigator = () => {
   );
 };
 
+function SplashScreen({navigation}) {
+  setTimeout(() => {
+    navigation.replace('TabNavigator');
+  }, 3000);
+  return (
+    <View>
+      <Text>Splash Screen</Text>
+    </View>
+  );
+}
+
 const AppRoute = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="SplashScreen">
         <Stack.Screen
           name="TabNavigator"
           component={TabNavigator}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -66,7 +84,7 @@ const AppRoute = () => {
         />
         <Stack.Screen
           name="LeaveStatus"
-          component={LeaveStatus}
+          component={Login}
           options={{
             headerStyle: {
               backgroundColor: '#993399',

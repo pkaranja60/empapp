@@ -10,9 +10,9 @@ import {
 import {DatePicker} from '../components/DatePicker';
 
 export default function LeaveRequest() {
-  const {startDate, setStartDate} = useState('');
-  const {endDate, setEndDate} = useState('');
-  const {description, setDescription} = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [description, setDescription] = useState('');
 
   return (
     <View style={styles.container}>
@@ -20,12 +20,18 @@ export default function LeaveRequest() {
         <View style={styles.form}>
           <View style={styles.textWrapper}>
             <Text style={styles.textLabel}>Start Date</Text>
-            <DatePicker date={startDate} onSelect={setStartDate} />
+            <DatePicker
+              date={startDate}
+              onSelect={nextDate => setStartDate(nextDate)}
+            />
           </View>
 
           <View style={styles.textWrapper}>
             <Text style={styles.textLabel}>End Date</Text>
-            <DatePicker date={endDate} onSelect={setEndDate} />
+            <DatePicker
+              date={endDate}
+              onSelect={nextDate => setEndDate(nextDate)}
+            />
           </View>
 
           <View style={styles.textWrapper}>
@@ -36,7 +42,7 @@ export default function LeaveRequest() {
               placeholderTextColor="#778899"
               label="description"
               value={description}
-              onChangeText={text => setDescription(text)}
+              onChangeText={newText => setDescription(newText)}
             />
           </View>
 
@@ -56,18 +62,18 @@ const styles = StyleSheet.create({
   },
   textWrapper: {
     marginVertical: 5,
+    padding: 5,
   },
   textLabel: {
     fontWeight: '500',
     letterSpacing: 1,
     fontSize: 12,
     color: '#9400d3',
-    marginVertical: 12,
+    marginBottom: 10,
   },
   form: {
-    marginHorizontal: 8,
-    marginVertical: 10,
-    justifyContent: 'space-around',
+    marginHorizontal: 10,
+    marginVertical: 15,
   },
   textInput: {
     backgroundColor: '#e6e7ec',
@@ -76,8 +82,8 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     height: 100,
     padding: 10,
-    color: '#000',
-    fontSize: 12,
+    color: '#212121',
+    fontSize: 16,
   },
   touchableButton: {
     backgroundColor: '#f66e43',
@@ -87,6 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+    padding: 20,
   },
   buttonText: {
     fontWeight: '400',
