@@ -5,45 +5,35 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Image,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../features/auth/authSlice';
 
 const Login = () => {
   const [workId, SetWorkId] = useState();
 
-  const dispatch = useDispatch();
+  useEffect(() => {});
 
-  const {user, isLoading, isSuccess, isError, message} = useSelector(
-    state => state.auth,
-  );
-
-  useEffect(() => {
-    if (isSuccess || user) {
-    }
-  });
-
-  const onSubmit = e => {
-    e.preventDefault();
-
-    const userData = {
-      workId,
-    };
-
-    dispatch(login(userData));
-  };
+  const onSubmit = e => {};
 
   return (
     <View style={styles.login}>
-      <TextInput
-        placeholder="Work Id"
-        style={styles.textInput}
-        onChangeText={e => SetWorkId(e)}
-        defaultValue={workId}
+      <Image
+        style={styles.touchableCardImage}
+        source={require('../../assets/images/employee.svg')}
       />
-      <TouchableOpacity style={styles.touchable} onPress={e => onSubmit(e)}>
-        <Text style={styles.touchableText}>Login</Text>
-      </TouchableOpacity>
+      <Text style={styles.loginText}>Login to proceed</Text>
+
+      <View style={styles.loginForm}>
+        <TextInput
+          placeholder="Work Id"
+          style={styles.textInput}
+          onChangeText={e => SetWorkId(e)}
+          defaultValue={workId}
+        />
+        <TouchableOpacity style={styles.touchable} onPress={e => onSubmit(e)}>
+          <Text style={styles.touchableText}>Login</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -53,20 +43,31 @@ export default Login;
 const styles = StyleSheet.create({
   login: {
     flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+  },
+  loginText: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontFamily: 'Poppins-SemiBold',
+    color: '#000',
+  },
+  loginForm: {
+    marginHorizontal: 15,
   },
   textInput: {
-    borderWidth: 1,
-    borderColor: '#efefef',
-    backgroundColor: '#dbdbdb',
+    borderWidth: 1.5,
+    borderColor: '#dbdbdb',
+    // borderColor: '#efefef',
+    // backgroundColor: '#dbdbdb',
     marginTop: 10,
     padding: 13,
-    borderRadius: 4,
+    borderRadius: 5,
     fontSize: 16,
     color: '#212121',
   },
   touchable: {
     backgroundColor: '#5ca046',
-
     padding: 20,
     elevation: 1,
     borderRadius: 15,
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   touchableText: {
-    fontWeight: '400',
+    fontFamily: 'Poppins-Regular',
     fontSize: 16,
     color: '#fff',
     textTransform: 'uppercase',

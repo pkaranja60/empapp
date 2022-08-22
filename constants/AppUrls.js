@@ -1,11 +1,7 @@
-let IP = 'http://localhost';
+let IP = 'http://localhost:5000';
 
-let PORT = ':8000/';
+let API_URL = '/api/employees/';
 
-const SERVER_URL = `${IP}${PORT}`;
+const LOGIN_URL = `${IP}${API_URL}/login`;
 
-const APP_URL = `${SERVER_URL}api/`;
-
-const EMPLOYEE_LOGIN = `${APP_URL}employee/login/`;
-
-export {EMPLOYEE_LOGIN};
+export {LOGIN_URL};

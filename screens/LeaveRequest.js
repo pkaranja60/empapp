@@ -7,12 +7,15 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import AppPicker from '../components/AppPicker';
 import {DatePicker} from '../components/DatePicker';
 
 export default function LeaveRequest() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [description, setDescription] = useState('');
+
+  const [selectedLeave, setSelectedLeave] = useState('');
 
   return (
     <View style={styles.container}>
@@ -31,6 +34,16 @@ export default function LeaveRequest() {
             <DatePicker
               date={endDate}
               onSelect={nextDate => setEndDate(nextDate)}
+            />
+          </View>
+
+          <View style={styles.textWrapper}>
+            <Text style={styles.textLabel}>Reason for Leave</Text>
+            <AppPicker
+              selectedValue={selectedLeave}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedLeave(itemValue)
+              }
             />
           </View>
 
@@ -65,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   textLabel: {
-    fontWeight: '500',
+    fontFamily: 'Poppins-Medium',
     letterSpacing: 1,
     fontSize: 12,
     color: '#9400d3',
@@ -96,8 +109,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   buttonText: {
-    fontWeight: '400',
-    fontSize: 12,
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
     color: '#fff',
     textTransform: 'uppercase',
   },

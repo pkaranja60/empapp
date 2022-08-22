@@ -21,7 +21,7 @@ const TabNavigator = () => {
       initialRouteName="Home"
       activeColor="#f0edf6"
       inactiveColor="#3e2465"
-      barStyle={{backgroundColor: '#694fad'}}>
+      barStyle={{backgroundColor: '#694fad', fontFamily: 'Poppins-Regular'}}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -84,7 +84,7 @@ const AppRoute = () => {
         />
         <Stack.Screen
           name="LeaveStatus"
-          component={Login}
+          component={LeaveStatus}
           options={{
             headerStyle: {
               backgroundColor: '#993399',

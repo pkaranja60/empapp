@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
   },
   textPrimary: {
     color: '#fff',
+    fontFamily: 'Poppins-Regular',
   },
   sectionContainer: {
     flexDirection: 'row',
@@ -114,6 +115,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#993399',
     fontSize: 12,
+    fontFamily: 'Poppins-Regular',
   },
   lineStyle: {
     borderWidth: 0.8,

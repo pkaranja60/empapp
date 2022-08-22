@@ -10,6 +10,7 @@ export const DatePicker = ({date, onSelect}) => {
     <Datepicker
       style={styles.datePicker}
       placeholder="Pick a Date"
+      min={Date}
       date={date}
       onSelect={onSelect}
       accessoryRight={CalendarIcon}

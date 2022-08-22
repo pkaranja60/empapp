@@ -1,11 +1,11 @@
+import {Picker} from '@react-native-picker/picker';
 import React from 'react';
-import {View, Text} from 'react-native';
 
-const AppPicker = () => {
+const AppPicker = ({selectedValue, onValueChange}) => {
   return (
-    <View>
-      <Text>AppPicker</Text>
-    </View>
+    <Picker selectedValue={selectedValue} onValueChange={onValueChange}>
+      <Picker.Item labe="Medical Leave" value="Medical" />
+    </Picker>
   );
 };
 
