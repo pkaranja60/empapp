@@ -1,3 +1,4 @@
+import {IndexPath} from '@ui-kitten/components';
 import React, {useState} from 'react';
 import {
   View,
@@ -8,14 +9,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AppPicker from '../components/AppPicker';
+// import AppPicker from '../components/AppPicker';
 import {DatePicker} from '../components/DatePicker';
 
 export default function LeaveRequest() {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = React.useState(new Date());
+  const [endDate, setEndDate] = React.useState(new Date());
   const [description, setDescription] = useState('');
-
-  const [selectedLeave, setSelectedLeave] = useState('');
+  const [leaveType, setLeaveType] = useState(new IndexPath(0));
 
   return (
     <View style={styles.container}>
@@ -23,6 +24,9 @@ export default function LeaveRequest() {
         <View style={styles.form}>
           <View style={styles.textWrapper}>
             <Text style={styles.textLabel}>Start Date</Text>
+            <Text category="h6">
+              Selected date: {startDate.toLocaleDateString()}
+            </Text>
             <DatePicker
               date={startDate}
               onSelect={nextDate => setStartDate(nextDate)}
@@ -31,6 +35,9 @@ export default function LeaveRequest() {
 
           <View style={styles.textWrapper}>
             <Text style={styles.textLabel}>End Date</Text>
+            <Text category="h6">
+              Selected date: {endDate.toLocaleDateString()}
+            </Text>
             <DatePicker
               date={endDate}
               onSelect={nextDate => setEndDate(nextDate)}
@@ -40,10 +47,8 @@ export default function LeaveRequest() {
           <View style={styles.textWrapper}>
             <Text style={styles.textLabel}>Reason for Leave</Text>
             <AppPicker
-              selectedValue={selectedLeave}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedLeave(itemValue)
-              }
+              selectedIndex={leaveType}
+              onSelect={index => setLeaveType(index)}
             />
           </View>
 

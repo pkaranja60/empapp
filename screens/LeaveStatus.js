@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card} from '@ui-kitten/components';
 
 const LeaveStatus = () => {
   return (
@@ -8,143 +8,18 @@ const LeaveStatus = () => {
       <ScrollView showVerticalScrollIndicator={false}>
         <View style={styles.listContainer}>
           <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-              <Text>List</Text>
-              <Text>List</Text>
-              <Text>List</Text>
-              <Text>List</Text>
-            </Card.Content>
+            <Text>List</Text>
+            <Text>List</Text>
+            <Text>List</Text>
+            <Text>List</Text>
+            <Text>List</Text>
           </Card>
           <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
+            <Text>List</Text>
+            <Text>List</Text>
           </Card>
           <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
-          </Card>
-          <Card style={styles.listCard}>
-            <Card.Content>
-              <Text>List</Text>
-            </Card.Content>
+            <Text>List</Text>
           </Card>
         </View>
       </ScrollView>

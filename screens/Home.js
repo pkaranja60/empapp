@@ -1,35 +1,45 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Card} from 'react-native-paper';
+import {Card} from '@ui-kitten/components';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import LeaveRequest from './LeaveRequest';
+import LeaveStatus from './LeaveStatus';
+import {AuthContext} from '../context/AuthContext';
 
-const Home = ({navigation}) => {
+export default function Home({navigation}) {
+  const {userInfo} = useContext(AuthContext);
+
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
-          <Card.Content>
-            <MaterialIcons name="account-circle" size={35} color="white" />
-            <View style={styles.informationContainer}>
-              <Text style={styles.textPrimary}>Name & Other Information</Text>
+          <MaterialIcons
+            style={{marginLeft: 10}}
+            name="account-circle"
+            size={35}
+            color="white"
+          />
+          <View style={styles.informationContainer}>
+            <Text style={{...styles.textPrimary, fontSize: 16}}>
+              {userInfo.name}
+            </Text>
+          </View>
+          <View style={styles.informationOtherContainer}>
+            <View>
+              <Text style={styles.textPrimary}>Leave Days Remaining</Text>
+              <Text style={styles.textPrimary}>Leave Days Remaining</Text>
             </View>
-            <View style={styles.informationOtherContainer}>
-              <View>
-                <Text style={styles.textPrimary}>Leave Days Remaining</Text>
-                <Text style={styles.textPrimary}>Leave Days Remaining</Text>
-              </View>
-              <View style={styles.lineStyle} />
-              <View>
-                <Text style={styles.textPrimary}>Leave Days Applied</Text>
-              </View>
+            <View style={styles.lineStyle} />
+            <View>
+              <Text style={styles.textPrimary}>Leave Days Applied</Text>
             </View>
-          </Card.Content>
+          </View>
         </Card>
       </View>
       <View style={styles.sectionContainer}>
         <TouchableOpacity
           style={styles.touchableCard}
-          onPress={() => navigation.navigate('LeaveRequest')}>
+          onPress={() => navigation.navigate(LeaveRequest)}>
           <Image
             style={styles.touchableCardImage}
             source={require('../assets/images/icons8-form-64.png')}
@@ -38,7 +48,7 @@ const Home = ({navigation}) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.touchableCard}
-          onPress={() => navigation.navigate('LeaveStatus')}>
+          onPress={() => navigation.navigate(LeaveStatus)}>
           <Image
             style={styles.touchableCardImage}
             source={require('../assets/images/icons8-notification-center-100.png')}
@@ -48,7 +58,7 @@ const Home = ({navigation}) => {
       </View>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -61,20 +71,20 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   card: {
-    margin: 10,
+    margin: 5,
     marginTop: 20,
     borderRadius: 20,
     height: 200,
     backgroundColor: '#694fad',
   },
   informationContainer: {
-    padding: 10,
-    marginVertical: 10,
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft: 10,
   },
   informationOtherContainer: {
-    padding: 5,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   textPrimary: {
@@ -121,8 +131,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.8,
     height: 50,
     borderColor: '#fff',
+    backgroundColor: '#fff',
     margin: 10,
   },
 });
-
-export default Home;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Datepicker, Icon} from '@ui-kitten/components';
+import {Datepicker} from '@ui-kitten/components';
 import Feather from 'react-native-vector-icons/Feather';
 import {StyleSheet} from 'react-native';
 
@@ -10,7 +10,6 @@ export const DatePicker = ({date, onSelect}) => {
     <Datepicker
       style={styles.datePicker}
       placeholder="Pick a Date"
-      min={Date}
       date={date}
       onSelect={onSelect}
       accessoryRight={CalendarIcon}

@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   View,
   TextInput,
   StyleSheet,
   Text,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 
-const Login = () => {
-  const [workId, SetWorkId] = useState();
+import LoginSVG from '../../assets/images/employee.svg';
+import {AuthContext} from '../../context/AuthContext';
+import Home from '../Home';
 
-  useEffect(() => {});
+const Login = ({navigation}) => {
+  const {login} = useContext(AuthContext);
 
-  const onSubmit = e => {};
+  const [workId, SetWorkId] = useState('');
 
   return (
     <View style={styles.login}>
-      <Image
-        style={styles.touchableCardImage}
-        source={require('../../assets/images/employee.svg')}
-      />
+      <View style={{alignItems: 'center'}}>
+        <LoginSVG width={300} height={300} />
+      </View>
       <Text style={styles.loginText}>Login to proceed</Text>
 
       <View style={styles.loginForm}>
@@ -30,7 +30,10 @@ const Login = () => {
           onChangeText={e => SetWorkId(e)}
           defaultValue={workId}
         />
-        <TouchableOpacity style={styles.touchable} onPress={e => onSubmit(e)}>
+        <TouchableOpacity
+          style={styles.touchable}
+          // onPress={() => navigation.navigate(Home)}
+          onPress={() => login(workId)}>
           <Text style={styles.touchableText}>Login</Text>
         </TouchableOpacity>
       </View>
@@ -44,7 +47,6 @@ const styles = StyleSheet.create({
   login: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#fff',
   },
   loginText: {
     fontSize: 20,
@@ -58,8 +60,7 @@ const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1.5,
     borderColor: '#dbdbdb',
-    // borderColor: '#efefef',
-    // backgroundColor: '#dbdbdb',
+    backgroundColor: '#e6e7ec',
     marginTop: 10,
     padding: 13,
     borderRadius: 5,
