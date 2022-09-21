@@ -1,26 +1,27 @@
 import React from 'react';
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, Text, ScrollView, StyleSheet, FlatList} from 'react-native';
 import {Card} from '@ui-kitten/components';
+
+const renderLeave = ({leave}) => {
+  <View>
+    <Card style={styles.listCard}>
+      <Text>{leave.leaveType}</Text>
+    </Card>
+  </View>;
+};
 
 const LeaveStatus = () => {
   return (
     <View style={styles.container}>
       <ScrollView showVerticalScrollIndicator={false}>
         <View style={styles.listContainer}>
-          <Card style={styles.listCard}>
-            <Text>List</Text>
-            <Text>List</Text>
-            <Text>List</Text>
-            <Text>List</Text>
-            <Text>List</Text>
-          </Card>
-          <Card style={styles.listCard}>
-            <Text>List</Text>
-            <Text>List</Text>
-          </Card>
-          <Card style={styles.listCard}>
-            <Text>List</Text>
-          </Card>
+          <FlatList
+            keyExtractor={leave => leave._id}
+            renderItem={renderLeave}
+            vertical
+            decelerationRate="fast"
+            showsVerticalScrollIndicator={false}
+          />
         </View>
       </ScrollView>
     </View>

@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useContext} from 'react';
 import {ActivityIndicator, View} from 'react-native';
+
 import {AuthContext} from '../context/AuthContext';
 
 import Login from '../screens/auth/Login';

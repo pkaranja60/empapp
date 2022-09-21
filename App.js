@@ -4,6 +4,7 @@ import {ApplicationProvider} from '@ui-kitten/components';
 import {NavigationContainer} from '@react-navigation/native';
 
 import AuthStack from './navigation/AuthStack';
+
 import {AuthContextProvider} from './context/AuthContext';
 
 export default () => (

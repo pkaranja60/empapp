@@ -2,25 +2,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import React, {useState, createContext} from 'react';
 import {useEffect} from 'react';
-import {LOGIN_URL} from '../services/config';
+import {LOGIN_URL, PROFILE_URL} from '../services/config';
 
 export const AuthContext = createContext();
-
-// export const authReducer = (state, action) => {
-//   switch (action.type) {
-//     case 'LOGIN':
-//       return {user: action.payload};
-//     case 'LOGOUT':
-//       return {user: null};
-//     default:
-//       return state;
-//   }
-// };
 
 export const AuthContextProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
 
   const login = workId => {
     setIsLoading(true);
@@ -44,8 +34,29 @@ export const AuthContextProvider = ({children}) => {
   const logout = () => {
     setIsLoading(true);
     setUserToken(null);
-    AsyncStorage.removeItem('userInfo');
     AsyncStorage.removeItem('userToken');
+    setIsLoading(false);
+  };
+
+  const loadProfile = token => {
+    setIsLoading(true);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    axios
+      .get(PROFILE_URL, config)
+      .then(response => {
+        let employeeProfile = response.data;
+        setUserProfile(employeeProfile);
+      })
+      .catch(e => {
+        console.log(e.message);
+      });
+
     setIsLoading(false);
   };
 
@@ -69,11 +80,12 @@ export const AuthContextProvider = ({children}) => {
 
   useEffect(() => {
     isLoggedIn();
+    loadProfile();
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{login, logout, isLoading, userToken, userInfo}}>
+      value={{login, logout, isLoading, userToken, userInfo, userProfile}}>
       {children}
     </AuthContext.Provider>
   );
